@@ -1,0 +1,49 @@
+<p-dialog 
+    header="Candidatos Postulados" 
+    [resizable]="false" 
+    [modal]="true" 
+    [maximizable]="true" 
+    appendTo="body" 
+    [(visible)]="dialogVisible" 
+    [style]="{width: 'auto'}" 
+    [contentStyle]="{height: 'auto'}">
+        <p-table 
+            [value]="listaCandidatos" 
+            [scrollable]="true"
+            dataKey="idEmpleoUsuario"
+            scrollHeight="flex" 
+            [tableStyle]="{'width': 'auto'}"
+            >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Estado</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-listaCandidatos>
+                    <tr [pSelectableRow]="listaCandidatos" (click)="op.toggle($event); candidatoSelect(listaCandidatos)" class="cursor-pointer hover:surface-100">
+                        <td>{{listaCandidatos.nombrePostulado}}</td>
+                        <td>{{listaCandidatos.apellidoPostulado}}</td>
+                        <td>{{listaCandidatos.correoPostulado}}</td>
+                        <td>{{listaCandidatos.telefonoPostulado}}</td>
+                        <td>{{listaCandidatos.estadoPostulacion}}</td>
+                        <p-overlayPanel #op>
+                            <div class="flex flex-column justify-content-around">
+                                <span class="mb-2"><strong>Añade un comentario para el candidato</strong></span>
+                                <textarea pInputTextarea [(ngModel)]="comentario"></textarea>
+                                <div class="flex flex-row justify-content-between mt-2">
+                                    <p-button label="Continuar Proceso" severity="success" size="small" (click)="accion(true); op.toggle($event)"/>
+                                    <p-button label="Rechazar" [text]="true" severity="danger" size="small" (click)="accion(false); op.toggle($event)"/>
+                                </div>
+                            </div>
+                        </p-overlayPanel>
+                    </tr>
+                   
+                </ng-template>
+        </p-table>
+        
+</p-dialog>
+

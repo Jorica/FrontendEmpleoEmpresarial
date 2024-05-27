@@ -1,0 +1,79 @@
+<p-dialog [header]="titulo" [modal]="true" [(visible)]="visible"  (onHide)="cerrarDialogo()" [style]="{ width: '25rem'}">
+
+    <form [formGroup]="formEmpleo" (ngSubmit)="onSubmit()" class="grid p-fluid">
+        <div class="field col-12">
+            <label htmlFor="titulo">Título</label> 
+                    <input pInputText id="nombre" type="text" formControlName="titulo" aria-describedby="titulo-help"/>
+                    
+                    @if(
+                        formEmpleo.get('titulo')?.invalid && 
+                        formEmpleo.get('titulo')?.touched && 
+                        formEmpleo.get('titulo')?.errors?.['required']
+                    ){
+                        <div class="col-12">
+                            <small id="titulo-help" class="p-error">El título es requerido</small>
+                        </div>
+                    }
+        </div>
+
+        <div class="field col-6">
+            <label htmlFor="salario">Salario</label>
+            <p-inputNumber id="salario" inputId="locale-user" formControlName="salario" aria-describedby="salario-help"/>
+                    
+                    @if(
+                        formEmpleo.get('salario')?.invalid && 
+                        formEmpleo.get('salario')?.touched && 
+                        formEmpleo.get('salario')?.errors?.['required']
+                    ){
+                        <div class="col-12">
+                            <small id="salario-help" class="p-error">El salario es requerido</small>
+                        </div>
+                    }
+        </div>
+
+        <div class="field col-6">
+            <label htmlFor="idModalidad">Modalidad</label>
+            <p-dropdown
+                [options]="listModalidadTrabajo"
+                formControlName="idModalidad"
+                optionLabel="descripcion"
+                [checkmark]="true"
+                optionValue="id"
+            ></p-dropdown>
+            
+            
+            @if(
+                formEmpleo.get('idModalidad')?.invalid && 
+                formEmpleo.get('idModalidad')?.touched && 
+                formEmpleo.get('idModalidad')?.errors?.['required']
+            ){
+                <div class="col-12">
+                    <small id="idModalidad-help" class="p-error">La modalidad es requerida</small>
+                </div>
+            }
+            
+        </div>
+
+        <div class="field col-12">
+            <label htmlFor="descripcion">Descripción</label>
+            <textarea pInputTextarea id="descripcion" rows="5" formControlName="descripcion" aria-describedby="descripcion-help"></textarea>
+    
+                    
+                    @if(
+                        formEmpleo.get('descripcion')?.invalid && 
+                        formEmpleo.get('descripcion')?.touched && 
+                        formEmpleo.get('descripcion')?.errors?.['required']
+                    ){
+                        <div class="col-12">
+                            <small id="descripcion-help" class="p-error">La descripción es requerida.</small>
+                        </div>
+                    }
+        </div>
+
+        <div class="flex justify-content-between col-12">
+            <button pButton pRipple type="submit" label="Guardar" class="p-button-success" size="small"></button>
+                <button pButton pRipple type="button" label="Cancelar" (click)="visible = false" class="p-button-text" size="small" ></button>
+        </div>
+    </form>
+
+</p-dialog> 

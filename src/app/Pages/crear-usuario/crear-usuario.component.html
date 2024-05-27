@@ -1,0 +1,170 @@
+<div class="flex flex-column align-content-center align-items-center justify-content-center m-1 grid col-12">
+    <div class="flex flex-column align-items-center col-12 w-auto sm:w-6 p-card p-fluid">
+
+        <div class="flex flex-column align-items-center col-12">
+            <p-image src="../../../assets/Img/login.png" alt="Image"></p-image>
+            <span class="font-italic">Formulario de Registro</span>
+        </div>
+
+        <form [formGroup]="formUsuario" (ngSubmit)="onSubmit()">
+
+            <div class="flex flex-row align-content-center align-items-center justify-content-around col-12 grid">
+
+                <div class="field sm:col-12 md:col-12 xl:col-6">
+                    <label htmlFor="nombre">Nombre</label> 
+                    <input pInputText id="nombre" type="text" formControlName="nombre" aria-describedby="nombre-help"/>
+                    
+                    @if(
+                        formUsuario.get('nombre')?.invalid && 
+                        formUsuario.get('nombre')?.touched && 
+                        formUsuario.get('nombre')?.errors?.['required']
+                    ){
+                        <div class="col-12">
+                            <small id="nombre-help" class="p-error">El nombre es requerido</small>
+                        </div>
+                    }
+                    
+                    
+                </div>
+
+                <div class="field sm:col-12 md:col-12 xl:col-6">
+                    <label htmlFor="apellido">Apellido</label> 
+                    <input pInputText id="apellido" type="text" formControlName="apellido" aria-describedby="apellido-help"/>
+                    
+                    @if(
+                        formUsuario.get('apellido')?.invalid && 
+                        formUsuario.get('apellido')?.touched && 
+                        formUsuario.get('apellido')?.errors?.['required']
+                    ){
+                        <div class="col-12">
+                            <small id="apellido-help" class="p-error">El apellido es requerido</small>
+                        </div>
+                    }
+                    
+                    
+                </div>
+            </div>
+
+            <div class="flex flex-row align-content-center align-items-center justify-content-around col-12 grid">
+
+                <div class="field sm:col-12 md:col-12 xl:col-6">
+                    <label htmlFor="correo">Correo</label> 
+                    <input pInputText id="correo" type="text" formControlName="correo" aria-describedby="correo-help"/>
+                    
+                    @if(
+                        formUsuario.get('correo')?.invalid && 
+                        formUsuario.get('correo')?.touched && 
+                        formUsuario.get('correo')?.errors?.['required']
+                    ){
+                        <div class="col-12">
+                            <small id="correo-help" class="p-error">El correo es requerido</small>
+                        </div>
+                    }
+                    
+                    
+                </div>
+
+                <div class="field sm:col-12 md:col-12 xl:col-6">
+                    <label htmlFor="telefono">Teléfono</label> 
+                    <input pInputText id="telefono" type="text" formControlName="telefono" aria-describedby="telefono-help"/>
+                    
+                    @if(
+                        formUsuario.get('telefono')?.invalid && 
+                        formUsuario.get('telefono')?.touched && 
+                        formUsuario.get('telefono')?.errors?.['required']
+                    ){
+                        <div class="col-12">
+                            <small id="apellido-help" class="p-error">El telefono es requerido</small>
+                        </div>
+                    }
+                    
+                    
+                </div>
+            </div>
+
+            <div class="flex flex-row align-content-center align-items-center justify-content-around col-12 grid">
+                <div class="field sm:col-12 md:col-12 xl:col-6">
+                    <label htmlFor="usuario">Usuario</label> 
+                    <input pInputText id="usuario" type="text" formControlName="nombreUsuario" aria-describedby="usuario-help"/>
+                    
+                    @if(
+                        formUsuario.get('nombreUsuario')?.invalid && 
+                        formUsuario.get('nombreUsuario')?.touched && 
+                        formUsuario.get('nombreUsuario')?.errors?.['required']
+                    ){
+                        <div class="col-12">
+                            <small id="usuario-help" class="p-error">El usuario es requerido</small>
+                        </div>
+                    }
+                    
+                    
+                </div>
+
+                <div class="field sm:col-ñ12 md:col-12 xl:col-6">
+                    <label htmlFor="tipoUsuario">Tipo Usuario</label>
+                    <p-dropdown
+                        [options]="listTipoUsuario"
+                        formControlName="idTipoUsuario"
+                        optionLabel="descripcion"
+                        [checkmark]="true"
+                        optionValue="id"
+                    ></p-dropdown>
+                    
+                    @if(
+                        formUsuario.get('idTipoUsuario')?.invalid && 
+                        formUsuario.get('idTipoUsuario')?.touched && 
+                        formUsuario.get('idTipoUsuario')?.errors?.['required']
+                    ){
+                        <div class="col-12">
+                            <small id="tipoUsuario-help" class="p-error">El tipo de usuario es requerido</small>
+                        </div>
+                    }
+                    
+                    
+                </div>
+            </div>
+
+            <div class="flex flex-row align-content-center align-items-center justify-content-around col-12 grid">
+
+                <div class="field sm:col-12 md:col-12 xl:col-6">
+                    <label htmlFor="password">Contraseña</label> 
+                    <input pInputText id="password" type="password" formControlName="password" aria-describedby="password-help"/>
+                    
+                    @if(
+                        formUsuario.get('password')?.invalid && 
+                        formUsuario.get('password')?.touched && 
+                        formUsuario.get('password')?.errors?.['required']
+                    ){
+                        <div class="col-12">
+                            <small id="password-help" class="p-error">La contraseña es requerida</small>
+                        </div>
+                    }
+                    
+                    
+                </div>
+
+                <div class="field sm:col-12 md:col-12 xl:col-6">
+                    <label htmlFor="confirmarpassword">Confirmar Contraseña</label> 
+                    <input pInputText id="confirmarpassword" type="password" formControlName="confirmarPassword" aria-describedby="confirmarpassword-help"/>
+                    
+                    @if(
+                        formUsuario.get('confirmarPassword')?.invalid && 
+                        formUsuario.get('confirmarPassword')?.touched && 
+                        formUsuario.get('confirmarPassword')?.errors?.['required']
+                    ){
+                        <div class="col-12">
+                            <small id="confirmarpassword-help" class="p-error">Confirmar la contraseña es requerido.</small>
+                        </div>
+                    }
+                    
+                    
+                </div>
+
+            <div class="flex flex-row justify-content-between col-12">
+                <button pButton pRipple type="submit" label="Crear" class="p-button-success"></button>
+                <button pButton pRipple type="button" label="Ingresar" class="p-button-text" (click)="iraIngresar()"></button>
+            </div>
+            </div>
+        </form>
+    </div>
+</div>

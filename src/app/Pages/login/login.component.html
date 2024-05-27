@@ -1,0 +1,48 @@
+<div class="flex flex-column align-content-center align-items-center justify-content-center m-1 h-screen">
+    <div class="flex flex-column align-items-center col-12 w-auto p-card p-fluid">
+        <div class="flex flex-column align-items-center col-12">
+            <p-image src="../../../assets/Img/login.png" alt="Image"></p-image>
+            <span class="font-italic">Bienvenido a EmpleoEmpresarial</span>
+        </div>
+        <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+            <div class="field col-12">
+                <label htmlFor="usuario">Usuario</label> 
+                <input pInputText id="usuario" type="text" formControlName="usuario" aria-describedby="username-help"/>
+                
+                @if(
+                    formLogin.get('usuario')?.invalid && 
+                    formLogin.get('usuario')?.touched && 
+                    formLogin.get('usuario')?.errors?.['required']
+                ){
+                    <div class="col-12">
+                        <small id="username-help" class="p-error">El usuario es requerido</small>
+                    </div>
+                }
+                
+                
+            </div>
+            <div class="field col-12">
+                <label htmlFor="contraseña">Contraseña</label>
+                <input pInputText id="contraseña" type="password" formControlName="password"/>
+
+                @if(
+                    formLogin.get('password')?.invalid && 
+                    formLogin.get('password')?.touched && 
+                    formLogin.get('password')?.errors?.['required']
+                ){
+                    <div class="col-12">
+                        <small id="username-help" class="p-error">La contraseña es requerida.</small>
+                    </div>
+                }
+
+            </div>
+            <div class="flex flex-row justify-content-between col-12">
+                <button pButton pRipple type="submit" label="Ingresar" class="p-button-success"></button>
+                <button pButton pRipple type="button" label="Crear Cuenta" class="p-button-text" (click)="irCrearUsuario()"></button>
+            </div>
+            
+        </form>
+     
+    </div>
+</div>
+

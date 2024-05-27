@@ -1,0 +1,38 @@
+<div class="flex flex-column align-content-center align-items-center justify-content-center m-1">
+    <div class="w-auto sm:w-6 p-card p-2">
+        <div class="flex justify-content-center m-3">
+            <h2 class="font-italic"><strong>Bienvenido a EmpleoEmpresarial</strong></h2>
+        </div>
+
+        <p-menubar [model]="tieredOptions">
+            <ng-template pTemplate="end">
+                <p-confirmPopup key="cerrarSesion"></p-confirmPopup>
+            </ng-template>
+        </p-menubar> 
+    
+        
+        @if(listaEmpleoUsuario && listaEmpleoUsuario.length > 0){
+            @for(item of listaEmpleoUsuario; track item){
+                <p-divider type="dashed"/>
+                <div class="shadow-5 p-1 border-round-lg">
+                    <app-informacion-empleo
+                        [dataEmpleo]="item"
+                        (editarOfertaEmit)="editarOferta($event)"
+                        (actulizarEmpleosEmit)="actualizarListaEmpleo()"
+                    ></app-informacion-empleo>
+                </div>
+                
+            }
+        }
+    
+    </div>
+
+</div>
+
+@if(showDialogoNuevoEmpleo){
+    <div class="flex flex-row h-screen grid col-12">
+        <app-crear-editar-empleo [inEditarEmpleo]="objEditarEmpleo" (cerrarDialogoEmit)="cerrarDialogoCrearEmpleo($event)"></app-crear-editar-empleo>
+    </div>
+    
+   
+}

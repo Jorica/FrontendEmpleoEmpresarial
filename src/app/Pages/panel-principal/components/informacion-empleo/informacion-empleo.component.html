@@ -1,0 +1,66 @@
+<p-fieldset [legend]="dataEmpleo?.detalleEmpleo?.tituloEmpleo" [toggleable]="true">
+    
+    <div class="flex flex-row justify-content-between">
+        @if(dataEmpleo?.codigoUsuario != codigoEmpresa){
+            <span><strong>Empresa:&nbsp;</strong>{{dataEmpleo?.detalleEmpleo?.nombrePublico}}</span>
+        }
+        @else {<span>{{""}}</span>}
+        <span><strong>{{dataEmpleo?.detalleEmpleo?.fechaRegistro}}</strong></span>
+    </div>
+    
+    <p style="white-space: pre-line; word-wrap: break-word;">{{dataEmpleo?.detalleEmpleo?.descripcionEmpleo}}</p>
+    
+    <div class="flex flex-row justify-content-between">
+        <p><strong>Salario: </strong>{{dataEmpleo?.detalleEmpleo?.salarioEmpleo | currency:'$':'symbol':'1.0-2'}}</p>
+        <p><strong>Modalidad: </strong>{{dataEmpleo?.detalleEmpleo?.descripcionModalidadTrabajo}}</p>
+    </div>
+    <p-divider type="dashed"/>
+    @switch (dataEmpleo?.codigoUsuario) {
+        @case (codigoEmpresa) {
+            <div class="flex flex-row align-items-center justify-content-between">
+                <span><strong>Estado:&nbsp;</strong>{{dataEmpleo?.descripcionEstadoEmpleoUsuario}}</span>
+                <p-splitButton 
+                label="Ver Cantidatos" 
+                (onClick)="verCandidatos()" 
+                [model]="itemsBtnEmpresa"
+                text
+                size="small"
+                [id]="dataEmpleo?.idEmpleoUsuario"/>
+            </div>
+            <p-confirmPopup [key]="dataEmpleo?.idEmpleoUsuario"></p-confirmPopup>
+        }
+        @case (codigoPersona) {
+            <div class="flex flex-column justify-content-end">
+                <span class="p-1">
+                    <strong>Estado:&nbsp;</strong>{{dataEmpleo?.descripcionEstadoEmpleoUsuario}}
+                </span>
+                @if(dataEmpleo?.observacionEmpleoUsuario){
+                    <span class="p-1" style="white-space: pre-line; word-wrap: break-word;">
+                        <strong>Observación Empresa:&nbsp;</strong>{{dataEmpleo?.observacionEmpleoUsuario}}
+                    </span>
+                }
+                
+            </div>
+            
+        }
+        @default {
+            <div class="flex flex-row justify-content-end">
+                <p-button
+                    label="Postularme a la oferta"
+                    icon="pi pi-check-square"
+                    [text]="true" 
+                    size="small" 
+                    (click)="aplicarOferta()"
+                    [id]="dataEmpleo?.idEmpleoUsuario"
+                />
+            </div>
+            <p-confirmPopup [key]="dataEmpleo?.idEmpleoUsuario"></p-confirmPopup>
+            
+            
+        }
+    }
+</p-fieldset>
+
+@if(showDialogCandidatos){
+    <app-vista-candidatos [listaCandidatos]="listaCandidatos!"></app-vista-candidatos>
+}
