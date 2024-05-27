@@ -15,10 +15,10 @@ Actualmente, la constante del entorno apunta al backend en la ruta `https://loca
 Ruta: `src\environments\environments.dev.ts`
 
 ## Características Funcionales
-1. **Uso de Librería PrimeNG:** Utiliza PrimeNG, una poderosa biblioteca de componentes UI para Angular, para una experiencia de usuario moderna.
-2. **Uso de Librería PrimeFlex:** Aprovecha PrimeFlex para un diseño flexible y adaptable que se ajusta a diferentes dispositivos y tamaños de pantalla.
-3. **Encriptación de Contraseñas:** Implementa una pequeña encriptación para almacenar las contraseñas de forma segura y comparar las credenciales de usuario de manera segura.
-4. **Almacenamiento de Sesión con sessionStorage:** Utiliza el sessionStorage para almacenar la sesión del usuario, proporcionando una experiencia fluida entre las distintas vistas de la aplicación.
-5. **Interceptors para Pantalla de Carga:** Emplea interceptores para mostrar una pantalla de carga durante cada solicitud HTTP, mejorando la experiencia del usuario al proporcionar retroalimentación visual sobre el progreso de las operaciones.
+1. **Uso de Librería PrimeNG:** biblioteca de componentes UI para Angular,
+2. **Uso de Librería PrimeFlex:** 
+3. **Encriptación de Contraseñas:** Implementa una pequeña encriptación para almacenar las contraseñas y comparar las credenciales de usuario
+4. **Almacenamiento de Sesión con sessionStorage:** Utiliza el sessionStorage para almacenar la sesión del usuario
+5. **Interceptors para Pantalla de Carga:** Emplea interceptores para mostrar una pantalla de carga durante cada solicitud HTTP
 6. **Manejo de Mensajes:** Implementa un sistema completo de manejo de mensajes para comunicar errores, advertencias y otra información relevante al usuario de manera clara y concisa.
-7. **Guardianes de Rutas:** Utiliza guardianes de rutas para restringir el acceso a ciertas partes de la aplicación, garantizando la seguridad y la integridad de los datos sensibles.
+7. **Guardianes de Rutas:** Utiliza guardianes de rutas para restringir el acceso a ciertas partes de la aplicación
